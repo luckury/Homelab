@@ -1,0 +1,178 @@
+{
+  "cloudflare": [
+    #// kury.cc
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "7825552c5118740ace96931b49be4ab6",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+    	}
+      ]
+    },
+    #// kury.gg
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "3413d5f56c9ff33bd03053b03edd8f31",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    },
+    #// kury.me
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "6eb5dc7b875b2430052a812cf6ef2975",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    },
+    #// kury.ryukyu
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "0b5f0bd16b90a0b1c13254f591274b67",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    },
+    #// kury.ryukyu
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "0b5f0bd16b90a0b1c13254f591274b67",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    },
+    #// luckury.me
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "55ec03776566ed3e1246ef2252514f7b",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    },
+    #// plagiator.app
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "01aeb50bb9564824b531af7bd870f70d",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    },
+    #// plagiator.dev
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "7f68d1dcc46113bb6116eea8ece34e65",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    },
+    #// plagiator.net
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "3d039cd64d7b6f4145ea9ba973a5bc4d",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    },
+    #// plagiator.net
+    {
+      "authentication": {
+        "api_token": "{{ op://Homelab/Cloudflare DNS Zone Edit/credential }}"
+      },
+      "zone_id": "aadc0936845e5b0b04a73cd3beef02f0",
+      "subdomains": [
+        {
+          "name": "",
+          "proxied": true
+        },
+        {
+          "name": "*",
+          "proxied": true
+        }
+      ]
+    }
+  ],
+  "a": true,
+  "aaaa": false,
+  "purgeUnknownRecords": false,
+  "ttl": 300
+}
