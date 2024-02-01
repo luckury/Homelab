@@ -2,14 +2,15 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: appproject-homelab-root
+  name: appproject-cert-manager
   namespace: argocd
 spec:
   clusterResourceWhitelist:
     - group: 'argoproj.io'
-      kind: ['AppProject', 'ApplicationSet', 'Application']
+      kind: 'Application'
   destinations:
-    - namespace: 'argocd'
+    - namespace: 'cert-manager'
       server: 'https://kubernetes.default.svc'
   sourceRepos:
     - 'https://github.com/luckury/Homelab'
+    - 'https://charts.jetstack.io'

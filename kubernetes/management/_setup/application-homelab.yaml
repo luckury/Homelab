@@ -1,7 +1,8 @@
+---
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: homelab-appprojects
+  name: application-homelab-app-of-apps
   namespace: argocd
 spec:
   destination:
