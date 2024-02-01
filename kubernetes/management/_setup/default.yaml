@@ -1,0 +1,20 @@
+---
+# This AppProject is automatically created by ArgoCD.
+# By default, this AppProject is too permissive, for this reason
+# we decided to remove all the permissions for the 'default' AppProject.
+# FFI: https://argoproj.github.io/argo-cd/user-guide/projects/#the-default-project
+
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: ""
+      kind: ""
+  destinations:
+    - namespace: argocd
+      server: https://kubernetes.invalid
+  sourceRepos:
+    - ""
