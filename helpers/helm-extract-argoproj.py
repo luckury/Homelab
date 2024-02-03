@@ -57,7 +57,7 @@ def generate_argocd_appproject_yaml(resource_kinds, chart_repo, chart_name):
         'spec': {
             'sourceRepos': [chart_repo],
             'destinations': [{'namespace': f'{chart_name}', 'server': 'https://kubernetes.default.svc'}],
-            'clusterResourceWhitelist': [{'group': str(kind).replace('<empty-string>', ''), 'kind': ", ".join(resource_kinds[kind])} for kind in resource_kinds.keys()]
+            'clusterResourceWhitelist': [{'group': str(resource).replace('<empty-string>', ''), 'kind': kind} for resource in resource_kinds.keys() for kind in resource_kinds[resource]]
         }
     }
     return yaml.dump(appproject_yaml, default_flow_style=False)
@@ -65,7 +65,7 @@ def generate_argocd_appproject_yaml(resource_kinds, chart_repo, chart_name):
 if __name__ == "__main__":
     chart_name = 'cert-manager'
     chart_repo = 'https://...'
-    chart_src_dir = 'chart'
-    chart_render_dir = 'rendered_charts'
+    chart_src_dir = f'tmp/charts/{chart_name}'
+    chart_render_dir = 'tmp/rendered_charts/'
 
     process_chart(chart_name, chart_repo, chart_src_dir, chart_render_dir)
