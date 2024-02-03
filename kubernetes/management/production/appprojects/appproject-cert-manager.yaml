@@ -6,8 +6,18 @@ metadata:
   namespace: argocd
 spec:
   clusterResourceWhitelist:
+    - group: ''
+      kind: Service, ServiceAccount
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration, MutatingWebhookConfiguration
+    - group: apps
+      kind: Deployment
     - group: 'argoproj.io'
       kind: 'Application'
+    - group: batch
+      kind: Job
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole, RoleBinding, ClusterRoleBinding, Role
   destinations:
     - namespace: 'cert-manager'
       server: 'https://kubernetes.default.svc'
