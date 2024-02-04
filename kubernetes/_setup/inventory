@@ -1,22 +1,14 @@
 ## only enter management interface IPs here
 
-[prod]
-
-[haproxy-nodes]
+[haproxy_nodes]
 192.168.172.3
 192.168.172.5
 192.168.172.7
 
-[initial-node]
+[initial_node]
 192.168.172.3
 
-[cpn-nodes]
+[cpn_nodes]
 192.168.172.3
 192.168.172.5
 192.168.172.7
-
-[worker-nodes]
-## none ##
-
-[qm]
-## none ##

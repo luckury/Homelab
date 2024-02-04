@@ -2,6 +2,6 @@
 - hosts: "{{ machine }}"
   become: true
   tasks:
-    - name: Deploy HAProxy and Keepalied
+    - name: Deploy HAProxy and Keepalived
       roles:
         - role: ../../ansible/haproxy-keepalived

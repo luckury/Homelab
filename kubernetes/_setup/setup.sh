@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Setup HAProxy and Keepalived with Ansible
-ansible-playbook -i inventory -e 'machine=haproxy-nodes' setup.yaml
+ansible-playbook -i inventory -e 'machine=haproxy_nodes' setup.yaml
 
 ## Deploy ArgoCD itself
 kubectl create namespace argocd
