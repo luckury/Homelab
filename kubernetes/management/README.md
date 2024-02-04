@@ -5,14 +5,14 @@ Services on Management Cluster ##
 
 01. ArgoCD
 02. Longhorn
-06. Cert-Manager
-03. Ranger
-04. piHole
-05. Authentik
-07. External-DNS
-08. External Secrets
-09. Prometheus Operator
-10. CloudflareDDNS
+03. Cert-Manager
+04. CloudflareDDNS
+05. Ranger
+06. piHole
+07. Authentik
+08. External-DNS
+09. External-Secrets
+10. Prometheus Operator
 11. Omada Controller
 12. RBAC-Manager
 
