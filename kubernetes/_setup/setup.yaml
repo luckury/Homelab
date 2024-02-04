@@ -1,7 +1,9 @@
 ---
-- hosts: "{{ machine }}"
+- hosts: haproxy_nodes
   become: true
+  vars:
+    ansible_ssh_private_key_file: /root/.ssh/masterkey_homelab
   tasks:
     - name: Deploy HAProxy and Keepalived
-      roles:
-        - role: ../../ansible/haproxy-keepalived
+      import_role:
+        name: ../../ansible/haproxy-keepalived
