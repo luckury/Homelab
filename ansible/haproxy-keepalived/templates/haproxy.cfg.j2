@@ -10,6 +10,6 @@ backend kubernetes-backend
   mode tcp
   option ssl-hello-chk
   balance roundrobin
-    server cpn001 {{ cpn001 }}:6443 check fall 3 rise 2
-    server cpn002 {{ cpn002 }}:6443 check fall 3 rise 2
-    server cpn003 {{ cpn003 }}:6443 check fall 3 rise 2
+  server cpn001 {{ cpn001 }}:6443 check fall 3 rise 2
+  server cpn002 {{ cpn002 }}:6443 check fall 3 rise 2
+  server cpn003 {{ cpn003 }}:6443 check fall 3 rise 2
