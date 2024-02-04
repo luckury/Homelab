@@ -9,16 +9,16 @@ vrrp_script check_apiserver {
 
 vrrp_instance VI_1 {
     state BACKUP
-    interface {{ interface_name }}
+    interface {{ ansible_default_ipv4.interface }}
     virtual_router_id 1
     priority 100
     advert_int 5
     authentication {
         auth_type PASS
-        auth_pass mysecret
+        auth_pass mysecret-12345
     }
     virtual_ipaddress {
-        {{ keepalive_ip }} dev {{ interface_name }}
+        {{ keepalive_ip }} dev {{ ansible_default_ipv4.interface }}
     }
     track_script {
         check_apiserver
