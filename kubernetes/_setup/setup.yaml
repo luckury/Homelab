@@ -1,0 +1,7 @@
+---
+- hosts: "{{ machine }}"
+  tasks:
+    - name: Deploy HAProxy and Keepalied
+      become: true
+      roles:
+        - role: ../../ansible/haproxy-keepalived

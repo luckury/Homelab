@@ -1,0 +1,42 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install keepalived and haproxy
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - keepalived
+    - haproxy
+
+- name: Create check_apiserver.sh script
+  template:
+    src:  check_apiserver.sh.j2 # Replace with the path to your template file
+    dest: /etc/keepalived/check_apiserver.sh  # Replace with the destination path on the target host
+    mode: '644'
+
+- name: Create keepalived.conf file
+  template:
+    src:  keepalived.conf.j2 # Replace with the path to your template file
+    dest: /etc/keepalived/keepalived.conf
+    mode: '644'
+
+- name: Enable and start keepalived service
+  service:
+    name: keepalived
+    state: started
+    enabled: yes
+
+- name: Configure haproxy
+  template:
+    src:  haproxy.cfg.j2 # Replace with the path to your template file
+    dest: /etc/haproxy/haproxy.cfg
+    mode: '644'
+
+- name: Enable and restart haproxy service
+  service:
+    name: haproxy
+    state: restarted
+    enabled: yes
