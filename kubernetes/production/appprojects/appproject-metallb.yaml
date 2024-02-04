@@ -1,0 +1,15 @@
+---
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: appproject-homelab-root
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: 'argoproj.io'
+      kind: ['AppProject', 'ApplicationSet', 'Application']
+  destinations:
+    - namespace: 'argocd'
+      server: 'https://kubernetes.default.svc'
+  sourceRepos:
+    - 'https://github.com/luckury/Homelab'

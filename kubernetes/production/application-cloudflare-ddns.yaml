@@ -10,10 +10,8 @@ spec:
     server: https://kubernetes.default.svc
   project: homelab-root
   source:
-    directory:
-      recurse: true
-    path: kubernetes/management/production/
     repoURL: https://github.com/luckury/Homelab.git
+    path: kubernetes/management/production/
     targetRevision: main
   syncPolicy:
     automated:
