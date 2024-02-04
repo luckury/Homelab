@@ -1,5 +1,5 @@
 frontend kubernetes-frontend
-  bind *:8443
+  bind :8443 interface {{ ansible_default_ipv4.interface }}
   mode tcp
   option tcplog
   default_backend kubernetes-backend
@@ -10,6 +10,6 @@ backend kubernetes-backend
   mode tcp
   option ssl-hello-chk
   balance roundrobin
-    server master1 {{ cpn001 }}:6443 check fall 3 rise 2
-    server master2 {{ cpn002 }}:6443 check fall 3 rise 2
-    server master3 {{ cpn003 }}:6443 check fall 3 rise 2
+    server cpn001 {{ cpn001 }}:6443 check fall 3 rise 2
+    server cpn002 {{ cpn002 }}:6443 check fall 3 rise 2
+    server cpn003 {{ cpn003 }}:6443 check fall 3 rise 2
