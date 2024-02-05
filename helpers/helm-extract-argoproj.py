@@ -10,12 +10,13 @@ def process_chart(chart_name, chart_repo, chart_src_dir, chart_render_dir):
 
     # Extract resource kinds
     resource_kinds = extract_resource_kinds(chart_render_dir, chart_name)
-    print("Extracted resource kinds:", resource_kinds)
 
     # Generate ArgoCD AppProject YAML
     appproject_yaml = generate_argocd_appproject_yaml(resource_kinds, chart_repo, chart_name)
+    print("---")
     print("ArgoCD AppProject YAML:")
     print(appproject_yaml)
+    print("---")
 
 def render_helm_chart(chart_name, chart_directory, output_directory):
     subprocess.run(['helm', 'template', chart_name, chart_directory, '--output-dir', output_directory], check=True)
@@ -32,6 +33,10 @@ def extract_resource_kinds(output_directory, chart_name):
             
             ## In case there are multiple manifests separated with '---' in one file
             for manifest in manifests:
+                if manifest is None or manifest['apiVersion'] is None:
+                    print(f"Manifest {manifest} from file {filename} dropped.")
+                    continue
+                
                 key = ''
                 
                 ## Check for top level resource kind
@@ -44,8 +49,7 @@ def extract_resource_kinds(output_directory, chart_name):
                     resources[key] = set()
                 
                 resources[key].add(manifest['kind'])
-    
-    print('resources:', resources)
+
     return resources
 
 def generate_argocd_appproject_yaml(resource_kinds, chart_repo, chart_name):
@@ -63,8 +67,8 @@ def generate_argocd_appproject_yaml(resource_kinds, chart_repo, chart_name):
     return yaml.dump(appproject_yaml, default_flow_style=False)
 
 if __name__ == "__main__":
-    chart_name = 'cert-manager'
-    chart_repo = 'https://...'
+    chart_name = 'longhorn'
+    chart_repo = 'https://charts.longhorn.io'
     chart_src_dir = f'tmp/charts/{chart_name}'
     chart_render_dir = 'tmp/rendered_charts/'
 
