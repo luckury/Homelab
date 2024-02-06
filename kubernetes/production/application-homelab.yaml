@@ -14,7 +14,7 @@ spec:
       path: kubernetes/production/
       targetRevision: main
     - repoURL: https://github.com/luckury/Homelab.git
-      path: kubernetes/production/approjects
+      path: kubernetes/production/appprojects
       targetRevision: main
   syncPolicy:
     automated:
