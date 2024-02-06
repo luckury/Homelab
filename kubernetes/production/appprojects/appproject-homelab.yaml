@@ -7,7 +7,11 @@ metadata:
 spec:
   clusterResourceWhitelist:
     - group: 'argoproj.io'
-      kind: ['AppProject', 'ApplicationSet', 'Application']
+      kind: 'AppProject'
+    - group: 'argoproj.io'
+      kind: 'ApplicationSet'
+    - group: 'argoproj.io'
+      kind: 'Application'
   destinations:
     - namespace: 'argocd'
       server: 'https://kubernetes.default.svc'
