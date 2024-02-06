@@ -2,13 +2,13 @@
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: application-homelab-app-of-apps
+  name: homelab-app-of-apps
   namespace: argocd
 spec:
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-  project: homelab-root
+  project: appproject-homelab
   source:
     repoURL: https://github.com/luckury/Homelab.git
     path: kubernetes/production/
