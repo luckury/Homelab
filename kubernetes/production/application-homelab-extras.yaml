@@ -11,7 +11,7 @@ spec:
   project: appproject-homelab
   sources:
     - repoURL: https://github.com/luckury/Homelab.git
-      path: kubernetes/production/ingreses
+      path: kubernetes/production/ingresses
       targetRevision: main
     - repoURL: https://github.com/luckury/Homelab.git
       path: kubernetes/production/namespaces
