@@ -13,7 +13,7 @@ spec:
       helm:
         releaseName: metallb
     - repoURL: https://github.com/luckury/Homelab.git
-      path: kubernetes/production/application/metallb/
+      path: kubernetes/production/application-extras/metallb/
       targetRevision: main
   destination:
     server: 'https://kubernetes.default.svc'

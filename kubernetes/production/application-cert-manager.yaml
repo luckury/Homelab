@@ -6,14 +6,17 @@ metadata:
   namespace: argocd
 spec:
   project: appproject-cert-manager
-  source:
-    chart: cert-manager
-    repoURL: https://charts.jetstack.io
-    targetRevision: 1.14.1
-    helm:
-      releaseName: cert-manager
-      valuesObject:
-        installCRDs: true
+  sources:
+    - chart: cert-manager
+      repoURL: https://charts.jetstack.io
+      targetRevision: 1.14.1
+      helm:
+        releaseName: cert-manager
+        valuesObject:
+          installCRDs: true
+    - repoURL: https://github.com/luckury/Homelab.git
+      path: kubernetes/production/application-extras/longhorn/
+      targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cert-manager
