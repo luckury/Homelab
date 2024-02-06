@@ -9,10 +9,13 @@ spec:
     namespace: argocd
     server: https://kubernetes.default.svc
   project: appproject-homelab
-  source:
-    repoURL: https://github.com/luckury/Homelab.git
-    path: kubernetes/production/
-    targetRevision: main
+  sources:
+    - repoURL: https://github.com/luckury/Homelab.git
+      path: kubernetes/production/
+      targetRevision: main
+    - repoURL: https://github.com/luckury/Homelab.git
+      path: kubernetes/production/approjects
+      targetRevision: main
   syncPolicy:
     automated:
       prune: false
