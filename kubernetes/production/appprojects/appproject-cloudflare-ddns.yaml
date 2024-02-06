@@ -2,14 +2,14 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: appproject-homelab-root
+  name: appproject-cloudflare-ddns
   namespace: argocd
 spec:
   clusterResourceWhitelist:
-    - group: 'argoproj.io'
-      kind: ['AppProject', 'ApplicationSet', 'Application']
+    - group: apps
+      kind: Deployment
   destinations:
-    - namespace: 'argocd'
+    - namespace: 'cloudflare-ddns'
       server: 'https://kubernetes.default.svc'
   sourceRepos:
     - 'https://github.com/luckury/Homelab'

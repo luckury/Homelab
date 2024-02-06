@@ -15,6 +15,7 @@ Services on Management Cluster ##
 10. Prometheus Operator
 11. Omada Controller
 12. RBAC-Manager
+13. Cilium
 
 ## Setup Instruction ##
 

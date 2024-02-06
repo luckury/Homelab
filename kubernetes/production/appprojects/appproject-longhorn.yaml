@@ -2,14 +2,31 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: appproject-homelab-root
+  name: appproject-longhorn
   namespace: argocd
 spec:
   clusterResourceWhitelist:
-    - group: 'argoproj.io'
-      kind: ['AppProject', 'ApplicationSet', 'Application']
+    - group: ''
+      kind: Service
+    - group: ''
+      kind: ServiceAccount
+    - group: ''
+      kind: ConfigMap
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: DaemonSet
+    - group: batch
+      kind: Job
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
   destinations:
-    - namespace: 'argocd'
+    - namespace: 'longhorn-system'
       server: 'https://kubernetes.default.svc'
   sourceRepos:
     - 'https://github.com/luckury/Homelab'
+    - 'https://charts.longhorn.io'

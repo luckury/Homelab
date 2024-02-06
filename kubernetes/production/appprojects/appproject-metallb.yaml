@@ -2,14 +2,39 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: appproject-homelab-root
+  name: appproject-metallb
   namespace: argocd
 spec:
   clusterResourceWhitelist:
-    - group: 'argoproj.io'
-      kind: ['AppProject', 'ApplicationSet', 'Application']
+    - group: ''
+      kind: ServiceAccount
+    - group: ''
+      kind: Service
+    - group: ''
+      kind: Secret
+    - group: ''
+      kind: ConfigMap
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: DaemonSet
+    - group: metallb.io
+      kind: IPAddressPool
+    - group: metallb.io
+      kind: L2Advertisement
+    - group: rbac.authorization.k8s.io
+      kind: RoleBinding
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: Role
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
   destinations:
-    - namespace: 'argocd'
+    - namespace: 'metallb-system'
       server: 'https://kubernetes.default.svc'
   sourceRepos:
     - 'https://github.com/luckury/Homelab'
+    - 'https://metallb.github.io/metallb'
