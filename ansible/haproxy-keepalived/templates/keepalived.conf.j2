@@ -21,7 +21,7 @@ vrrp_instance haproxy-vip {
   advert_int 1
   authentication {
     auth_type PASS
-    auth_pass !1111!
+    auth_pass 192837
   }
   unicast_src_ip {{ ip_address }}
   unicast_peer {
