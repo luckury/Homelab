@@ -25,9 +25,9 @@ vrrp_instance haproxy-vip {
   }
   unicast_src_ip {{ ip_address }}
   unicast_peer {
-{% set other_hosts = groups['haproxy_nodes'] | difference([inventory_hostname]) %}
-{% for host in other_hosts %}
-    {{ host.ip_address }}
+{% set all_ips = groups['haproxy_nodes'] | difference([inventory_hostname]) | map('extract', hostvars, ['ansible_host']) %}
+{% for ip_address in all_ips %}
+   {{ ip_address }}
 {% endfor %}
   }
 
