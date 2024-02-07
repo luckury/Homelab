@@ -1,36 +1,36 @@
 initial_node:
   hosts:
-    initial:
+    curry-cluster001-mgmt-cpn001:
       hostname: "curry-cluster001-mgmt-cpn001"
       ip_address: "192.168.178.3"
       interface: "eno1"
 
 haproxy_nodes:
   hosts:
-    proxy1:
+    curry-cluster001-mgmt-cpn001:
       hostname: "curry-cluster001-mgmt-cpn001"
       ip_address: "192.168.178.3"
       interface: "eno1"
-    proxy2:
+    curry-cluster001-mgmt-cpn002:
       hostname: "curry-cluster001-mgmt-cpn002"
       ip_address: "192.168.178.5"
       interface: "enp1s0"
-    proxy3:
+    curry-cluster001-mgmt-cpn003:
       hostname: "curry-cluster001-mgmt-cpn003"
       ip_address: "192.168.178.7"
       interface: "enp1s0"
 
 cpn_nodes:
   hosts:
-    cpn1:
+    curry-cluster001-mgmt-cpn001:
       hostname: "curry-cluster001-mgmt-cpn001"
       ip_address: "192.168.178.3"
       interface: "eno1"
-    cpn2:
+    curry-cluster001-mgmt-cpn002:
       hostname: "curry-cluster001-mgmt-cpn002"
       ip_address: "192.168.178.5"
       interface: "enp1s0"
-    cpn3:
+    curry-cluster001-mgmt-cpn003:
       hostname: "curry-cluster001-mgmt-cpn003"
       ip_address: "192.168.178.7"
       interface: "enp1s0"
