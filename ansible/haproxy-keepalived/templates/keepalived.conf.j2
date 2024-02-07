@@ -1,26 +1,41 @@
-vrrp_script check_apiserver {
-  script "/etc/keepalived/check_apiserver.sh"
-  interval 3
-  timeout 10
-  fall 5
-  rise 2
-  weight -2
+global_defs {
+  notification_email {
+  }
+  router_id LVS_DEVEL
+  vrrp_skip_check_adv_addr
+  vrrp_garp_interval 0
+  vrrp_gna_interval 0
 }
 
-vrrp_instance VI_1 {
-    state BACKUP
-    interface {{ ansible_default_ipv4.interface }}
-    virtual_router_id 1
-    priority 100
-    advert_int 5
-    authentication {
-        auth_type PASS
-        auth_pass mysecret-12345
-    }
-    virtual_ipaddress {
-        {{ keepalive_ip }} dev {{ ansible_default_ipv4.interface }}
-    }
-    track_script {
-        check_apiserver
-    }
+vrrp_script chk_haproxy {
+  script "killall -0 haproxy"
+  interval 2
+  weight 2
+}
+
+vrrp_instance haproxy-vip {
+  state BACKUP
+  priority 100
+  interface {{ interface }}
+  virtual_router_id 60
+  advert_int 1
+  authentication {
+    auth_type PASS
+    auth_pass !1111!
+  }
+  unicast_src_ip {{ ip_address }}
+  unicast_peer {
+{% set other_hosts = groups['haproxy_nodes'] | difference([inventory_hostname]) %}
+{% for host in other_hosts %}
+    {{ host }}
+{% endfor %}
+  }
+
+  virtual_ipaddress {
+    {{ keepalive_ip }}
+  }
+
+  track_script {
+    chk_haproxy
+  }
 }
