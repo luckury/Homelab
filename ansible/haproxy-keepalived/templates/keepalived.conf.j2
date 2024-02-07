@@ -27,7 +27,7 @@ vrrp_instance haproxy-vip {
   unicast_peer {
 {% set other_hosts = groups['haproxy_nodes'] | difference([inventory_hostname]) %}
 {% for host in other_hosts %}
-    {{ host }}
+    {{ host.ip_address }}
 {% endfor %}
   }
 
