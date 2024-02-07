@@ -18,7 +18,7 @@ defaults
   timeout server 50000
 
 frontend kube-apiserver
-  bind :6443 interface {{ interface }}
+  bind :4443 interface {{ interface }}
   mode tcp
   option tcplog
   default_backend kube-apiserver
