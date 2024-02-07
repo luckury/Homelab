@@ -15,7 +15,7 @@ spec:
         valuesObject:
           installCRDs: true
     - repoURL: https://github.com/luckury/Homelab.git
-      path: kubernetes/production/application-extras/longhorn/
+      path: kubernetes/production/application-extras/cert-manager/
       targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
