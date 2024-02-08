@@ -2,16 +2,16 @@
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: application-homelab-app-of-apps
+  name: cloudflare-ddns
   namespace: argocd
 spec:
   destination:
-    namespace: argocd
+    namespace: cloudflare-ddns
     server: https://kubernetes.default.svc
-  project: homelab-root
+  project: appproject-cloudflare-ddns
   source:
     repoURL: https://github.com/luckury/Homelab.git
-    path: kubernetes/management/production/
+    path: kubernetes/management/production/application-extras/cloudflare-ddns
     targetRevision: main
   syncPolicy:
     automated:
