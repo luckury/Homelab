@@ -11,7 +11,7 @@ spec:
   project: appproject-cloudflare-ddns
   source:
     repoURL: https://github.com/luckury/Homelab.git
-    path: kubernetes/management/production/application-extras/cloudflare-ddns
+    path: kubernetes/production/application-extras/cloudflare-ddns
     targetRevision: main
   syncPolicy:
     automated:
