@@ -1,0 +1,54 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: piHole
+  namespace: argocd
+spec:
+  project: appproject-piHole
+  sources:
+    - chart: pihole
+      repoURL: https://mojo2600.github.io/pihole-kubernetes
+      targetRevision: 2.21.0
+      helm:
+        releaseName: pihole
+        valuesObject:
+          # will create kubernees ingress
+          ingress:
+            enabled: true
+            hosts:
+            - pihole.lab.kury.ryukyu
+          # will create kubernetes services for web admin
+          serviceWeb:
+            loadBalancerIP: 192.168.178.100
+            type: ClusterIP
+          # will set your admin password for the web inteface
+          adminPassword: theadminisboss
+          # create a kubernetes service and expose
+          # port 53 outside of cluster on the local network
+          serviceDns:
+            loadBalancerIP: 192.168.178.100
+            type: LoadBalancer
+          # enables cloudflare tunnel sidecar container
+          # and sets upstream dns in pihole to leverage it
+          doh:
+            enabled: false
+            pullPolicy: Always
+            envVars: {
+              DOH_UPSTREAM: "https://1.1.1.1/dns-query"
+            }
+          # pi-hole will automatially create a new
+          # persistent volume managed by longhorn
+           persistentVolumeClaim:
+             enabled: true
+             storageClass: longhorn
+    - repoURL: https://github.com/luckury/Homelab.git
+      path: kubernetes/production/application-extras/piHole/
+      targetRevision: main
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: piHole
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true

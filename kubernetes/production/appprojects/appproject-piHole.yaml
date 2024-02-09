@@ -1,0 +1,22 @@
+---
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: appproject-piHole
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Secret
+  - group: ''
+    kind: Service
+  - group: apps
+    kind: Deployment
+  destinations:
+    - namespace: 'piHole'
+      server: 'https://kubernetes.default.svc'
+  sourceRepos:
+    - 'https://github.com/luckury/Homelab'
+    - 'https://mojo2600.github.io/pihole-kubernetes'

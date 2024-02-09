@@ -7,8 +7,8 @@ Services on Management Cluster ##
 02. ✅ Longhorn 
 03. ✅ Cert-Manager 
 04. ✅ CloudflareDDNS 
-05. ✅ Rancher
-06. piHole
+05. ⚠️ Rancher (not compatible with Kubernetes 1.28.0)
+06. ✅ piHole
 07. Authentik
 08. External-DNS
 09. External-Secrets
