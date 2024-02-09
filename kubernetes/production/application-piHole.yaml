@@ -40,9 +40,9 @@ spec:
             }
           # pi-hole will automatially create a new
           # persistent volume managed by longhorn
-           persistentVolumeClaim:
-             enabled: true
-             storageClass: longhorn
+          persistentVolumeClaim:
+            enabled: true
+            storageClass: longhorn
     - repoURL: https://github.com/luckury/Homelab.git
       path: kubernetes/production/application-extras/piHole/
       targetRevision: main
