@@ -15,7 +15,7 @@ spec:
   - group: apps
     kind: Deployment
   destinations:
-    - namespace: 'piHole'
+    - namespace: 'pihole'
       server: 'https://kubernetes.default.svc'
   sourceRepos:
     - 'https://github.com/luckury/Homelab'
