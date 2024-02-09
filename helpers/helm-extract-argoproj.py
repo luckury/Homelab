@@ -67,8 +67,8 @@ def generate_argocd_appproject_yaml(resource_kinds, chart_repo, chart_name):
     return yaml.dump(appproject_yaml, default_flow_style=False)
 
 if __name__ == "__main__":
-    chart_name = 'metallb'
-    chart_repo = 'https://charts.longhorn.io'
+    chart_name = 'rancher'
+    chart_repo = 'placeholder'
     chart_src_dir = f'tmp/charts/{chart_name}'
     chart_render_dir = 'tmp/rendered_charts/'
 
