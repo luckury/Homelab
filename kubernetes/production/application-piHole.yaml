@@ -6,6 +6,7 @@ metadata:
   namespace: argocd
 spec:
   project: appproject-piHole
+  description: Install piHole adblocker in management cluster
   sources:
     - chart: mojo2600/pihole
       repoURL: https://mojo2600.github.io/pihole-kubernetes
