@@ -2,7 +2,7 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: appproject-piHole
+  name: appproject-pihole
   namespace: argocd
 spec:
   clusterResourceWhitelist:

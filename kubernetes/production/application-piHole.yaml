@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: piHole
+  name: pihole
   namespace: argocd
 spec:
-  project: appproject-piHole
+  project: appproject-pihole
   description: Install piHole adblocker in management cluster
   sources:
     - chart: mojo2600/pihole
