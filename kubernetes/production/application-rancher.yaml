@@ -13,6 +13,7 @@ spec:
       helm:
         releaseName: rancher
         valuesObject:
+          kubeVersion: < 99.0.0-0
           hostname: rancher.kury.ryukyu
           bootstrapPassword: theadminisboss
     - repoURL: https://github.com/luckury/Homelab.git
