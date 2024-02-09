@@ -3,11 +3,11 @@
 The management cluster is comprised of 3 Intel NUCs, which are set up as a Kubernetes cluster with k3s. The host OS of choice is Ubuntu.
 Services on Management Cluster ##
 
-01. ✅ ArgoCD ⚠️(Make self managed)
+01. ✅ ArgoCD ⚠️(Make self-managed)
 02. ✅ Longhorn 
 03. ✅ Cert-Manager 
 04. ✅ CloudflareDDNS 
-05. Rancher
+05. ✅ Rancher
 06. piHole
 07. Authentik
 08. External-DNS

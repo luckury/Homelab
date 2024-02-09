@@ -1,0 +1,38 @@
+---
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: appproject-rancher
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Service
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: ServiceAccount
+  - group: apps
+    kind: Deployment
+  - group: batch
+    kind: Job
+  - group: cert-manager.io
+    kind: Issuer
+  - group: networking.k8s.io
+    kind: Ingress
+  - group: policy
+    kind: PodSecurityPolicy
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+  - group: scheduling.k8s.io
+    kind: PriorityClass
+  destinations:
+    - namespace: 'cattle-system'
+      server: 'https://kubernetes.default.svc'
+  sourceRepos:
+    - 'https://github.com/luckury/Homelab'
+    - 'https://releases.rancher.com/server-charts/latest'
+    - 'https://releases.rancher.com/server-charts/stable'
+    - 'https://releases.rancher.com/server-charts/alpha'

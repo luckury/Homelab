@@ -1,0 +1,27 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rancher
+  namespace: argocd
+spec:
+  project: appproject-rancher
+  sources:
+    - chart: rancher-latest
+      repoURL: https://releases.rancher.com/server-charts/latest
+      targetRevision: 2.8.2
+      helm:
+        releaseName: rancher
+        valuesObject:
+          hostname: rancher.kury.ryukyu
+          bootstrapPassword: theadminisboss
+    - repoURL: https://github.com/luckury/Homelab.git
+      path: kubernetes/production/application-extras/rancher/
+      targetRevision: main
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: cattle-system
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
