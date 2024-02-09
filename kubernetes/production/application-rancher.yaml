@@ -13,7 +13,7 @@ spec:
       helm:
         releaseName: rancher
         valuesObject:
-          hostname: rancher.kury.ryukyu
+          hostname: rancher.lab.kury.ryukyu
           bootstrapPassword: theadminisboss
     - repoURL: https://github.com/luckury/Homelab.git
       path: kubernetes/production/application-extras/rancher/
