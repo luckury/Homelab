@@ -2,7 +2,7 @@
 kind: AppProject
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: appproject-omada
+  name: appproject-omada-controller
   namespace: argocd
 spec:
   clusterResourceWhitelist:
