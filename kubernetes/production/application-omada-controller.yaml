@@ -5,7 +5,7 @@ metadata:
   name: omada-controller
   namespace: argocd
 spec:
-  project: appproject-rancher
+  project: appproject-omada-controller
   sources:
     - chart: omada-controller
       repoURL: https://charts.truecharts.org
