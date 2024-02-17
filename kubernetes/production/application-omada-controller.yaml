@@ -1,0 +1,24 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: omada-controller
+  namespace: argocd
+spec:
+  project: appproject-rancher
+  sources:
+    - chart: omada-controller
+      repoURL: https://charts.truecharts.org
+      targetRevision: 13.1.0
+      helm:
+        releaseName: omada-controller
+    - repoURL: https://github.com/luckury/Homelab.git
+      path: kubernetes/production/application-extras/omada-controller/
+      targetRevision: main
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: omada-controller
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true

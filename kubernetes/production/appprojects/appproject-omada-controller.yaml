@@ -1,0 +1,20 @@
+---
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: appproject-omada
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: ''
+    kind: PersistentVolumeClaim
+  - group: ''
+    kind: Service
+  - group: apps
+    kind: Deployment
+  destinations:
+    - namespace: 'omada-controller'
+      server: 'https://kubernetes.default.svc'
+  sourceRepos:
+    - 'https://github.com/luckury/Homelab'
+    - 'https://charts.truecharts.org'
