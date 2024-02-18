@@ -4,7 +4,7 @@
 
 This are the only manifests you will have to deploy manually. After that ArgoCD will take over.
 
-> Only requirements are: Bash and a valid kubeconfig.
+> Only requirements are: Bash, a valid kubeconfig and an SSH key that can access all the nodes that need to be configured with Ansible.
 
 1. Edit the `approject-homelab.yml` && `application-homelab.yml`.
 2. Crate a token and edit the `secret-homelab-repo.yml`.
