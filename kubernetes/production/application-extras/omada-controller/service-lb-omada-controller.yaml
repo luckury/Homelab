@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: omada-controller-lb
+spec:
+  selector:
+    pod.name: main
+    app.kubernetes.io/name: omada-controller
+    app.kubernetes.io/instance: omada-controller
+  type: LoadBalancer
+  ports:
+  - name: omada-main
+    port: 8043
+    protocol: tcp
+    targetPort: 8043
+  - name: omada-comm
+    port: 8843
+    protocol: tcp
+    targetPort: 8843
+  - name: omada-tcp1
+    port: 29811
+    protocol: tcp
+    targetPort: 29811
+  - name: omada-tcp2
+    port: 29812
+    protocol: tcp
+    targetPort: 29812
+  - name: omada-tcp3
+    port: 29813
+    protocol: tcp
+    targetPort: 29813
+  - name: omada-tcp4
+    port: 29814
+    protocol: tcp
+    targetPort: 29814
+  - name: omada-tcp5
+    port: 29815
+    protocol: tcp
+    targetPort: 29815
+  - name: omada-tcp6
+    port: 29816
+    protocol: tcp
+    targetPort: 29816
+  - name: omada-udp0
+    port: 27001
+    protocol: udp
+    targetPort: 27001
+  - name: omada-udp1
+    port: 29810
+    protocol: udp
+    targetPort: 29810

@@ -12,6 +12,48 @@ spec:
       targetRevision: 13.1.0
       helm:
         releaseName: omada-controller
+        valuesObject:
+          service:
+            omada-tcp:
+              enabled: true
+              ports:
+                omada-tcp1:
+                  enabled: true
+                  port: 29811
+                  targetPort: 29811
+                omada-tcp2:
+                  enabled: true
+                  port: 29812
+                  targetPort: 29812
+                omada-tcp3:
+                  enabled: true
+                  port: 29813
+                  targetPort: 29813
+                omada-tcp4:
+                  enabled: true
+                  port: 29814
+                  targetPort: 29814
+                omada-tcp5:
+                  enabled: true
+                  port: 29815
+                  targetPort: 29815
+                omada-tcp6:
+                  enabled: true
+                  port: 29816
+                  targetPort: 29816
+            omada-udp:
+              enabled: true
+              ports:
+                omada-udp0:
+                  enabled: true
+                  protocol: udp
+                  port: 27001
+                  targetPort: 27001
+                omada-udp1:
+                  enabled: true
+                  protocol: udp
+                  port: 29810
+                  targetPort: 29810
     - repoURL: https://github.com/luckury/Homelab.git
       path: kubernetes/production/application-extras/omada-controller/
       targetRevision: main
@@ -22,3 +64,45 @@ spec:
     automated:
       prune: false
       selfHeal: true
+
+
+service:
+  main:
+    ports:
+      main:
+        protocol: https
+        port: 8043
+  comm:
+    enabled: true
+    ports:
+      comm:
+        protocol: https
+        enabled: true
+        port: 8843
+  omada-tcp:
+    enabled: true
+    ports:
+      omada-tcp1:
+        enabled: true
+        port: 29811
+        targetPort: 29811
+      omada-tcp2:
+        enabled: true
+        port: 29812
+        targetPort: 29812
+      omada-tcp3:
+        enabled: true
+        port: 29813
+        targetPort: 29813
+      omada-tcp4:
+        enabled: true
+        port: 29814
+        targetPort: 29814
+  omada-udp:
+    enabled: true
+    ports:
+      omada-udp1:
+        enabled: true
+        protocol: udp
+        port: 29810
+        targetPort: 29810
