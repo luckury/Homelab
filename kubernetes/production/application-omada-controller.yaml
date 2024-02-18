@@ -16,6 +16,7 @@ spec:
           service:
             omada-tcp:
               enabled: true
+              ## Port protocol string can be in lowercase here, becaue the are processes with helm template.
               ports:
                 omada-tcp1:
                   enabled: true

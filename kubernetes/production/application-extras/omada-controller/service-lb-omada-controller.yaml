@@ -8,44 +8,45 @@ spec:
     app.kubernetes.io/name: omada-controller
     app.kubernetes.io/instance: omada-controller
   type: LoadBalancer
+  ## Port protocol string needs to be in uppercase due to kube-spec.
   ports:
   - name: omada-main
     port: 8043
-    protocol: tcp
+    protocol: TCP
     targetPort: 8043
   - name: omada-comm
     port: 8843
-    protocol: tcp
+    protocol: TCP
     targetPort: 8843
   - name: omada-tcp1
     port: 29811
-    protocol: tcp
+    protocol: TCP
     targetPort: 29811
   - name: omada-tcp2
     port: 29812
-    protocol: tcp
+    protocol: TCP
     targetPort: 29812
   - name: omada-tcp3
     port: 29813
-    protocol: tcp
+    protocol: TCP
     targetPort: 29813
   - name: omada-tcp4
     port: 29814
-    protocol: tcp
+    protocol: TCP
     targetPort: 29814
   - name: omada-tcp5
     port: 29815
-    protocol: tcp
+    protocol: TCP
     targetPort: 29815
   - name: omada-tcp6
     port: 29816
-    protocol: tcp
+    protocol: TCP
     targetPort: 29816
   - name: omada-udp0
     port: 27001
-    protocol: udp
+    protocol: UDP
     targetPort: 27001
   - name: omada-udp1
     port: 29810
-    protocol: udp
+    protocol: UDP
     targetPort: 29810
