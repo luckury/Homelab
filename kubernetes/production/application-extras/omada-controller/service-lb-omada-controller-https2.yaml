@@ -9,7 +9,7 @@ spec:
     app.kubernetes.io/instance: omada-controller
   type: LoadBalancer
   ports:
-  - name: comm
+  - name: comm-test
     port: 8843
     protocol: TCP
     targetPort: 8843
