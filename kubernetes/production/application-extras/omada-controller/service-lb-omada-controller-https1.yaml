@@ -4,7 +4,9 @@ metadata:
   name: omada-controller-lb
 spec:
   selector:
-    app: omada-controller
+    pod.name: main
+    app.kubernetes.io/name: omada-controller
+    app.kubernetes.io/instance: omada-controller
   type: LoadBalancer
   ports:
   - name: main
