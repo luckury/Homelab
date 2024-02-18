@@ -11,4 +11,5 @@ spec:
   ports:
   - name: comm
     port: 8843
+    protocol: TCP
     targetPort: 8843

@@ -11,4 +11,5 @@ spec:
   ports:
   - name: main
     port: 8043
+    protocol: TCP
     targetPort: 8043
