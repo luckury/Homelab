@@ -1,6 +1,6 @@
 ---
 - name: Setup (and prepare) Kubernetes nodes with extra software and configs
-  hosts: cpn-nodes
+  hosts: cpn_nodes
   become: true
   vars:
     ansible_ssh_private_key_file: /root/.ssh/masterkey_homelab
