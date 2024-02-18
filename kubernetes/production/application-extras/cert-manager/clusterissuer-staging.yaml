@@ -11,7 +11,8 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
-    - selector: {}
-      http01:
-        ingress:
-          class: traefik
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: api-token
