@@ -1,9 +1,11 @@
 ---
 - name: Disable DNS stub listener
-  ansible.builtin.shell: sed -r -i.orig 's/#?DNSStubListener=yes/DNSStubListener=no/g' /etc/systemd/resolved.conf
+  shell: 
+    cmd: sed -r -i.orig 's/#?DNSStubListener=yes/DNSStubListener=no/g' /etc/systemd/resolved.conf
 
 - name: Link netplan's resolve.conf
-  ansible.builtin.shell: rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf'
+  shell:
+    cmd: rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
 - name: Enable and restart haproxy service
   service:
