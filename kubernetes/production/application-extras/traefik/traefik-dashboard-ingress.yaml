@@ -5,6 +5,9 @@ metadata:
   namespace: kube-system
   annotations:
     spec.ingressClassName: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   rules:
     - host: traefik.mgmt.kury.me
@@ -17,3 +20,7 @@ spec:
                 name: traefik-dashboard
                 port:
                   number: 9000
+   tls:
+    - secretName: traefik-ingress-cert
+      hosts:
+        - traefik.mgmt.kury.me
