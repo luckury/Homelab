@@ -1,0 +1,19 @@
+---
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: traefik
+  namespace: argocd
+spec:
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  project: appproject-traefik
+  sources:
+    - repoURL: https://github.com/luckury/Homelab.git
+      path: kubernetes/production/application-extras/traefik/
+      targetRevision: main
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
