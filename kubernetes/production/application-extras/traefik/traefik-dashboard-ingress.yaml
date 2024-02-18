@@ -20,7 +20,7 @@ spec:
                 name: traefik-dashboard
                 port:
                   number: 9000
-   tls:
+  tls:
     - secretName: traefik-ingress-cert
       hosts:
         - traefik.mgmt.kury.me
