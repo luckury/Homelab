@@ -15,3 +15,7 @@ This are the only manifests you will have to deploy manually. After that ArgoCD 
 ## Traefik Dashboard ##
 
 The Traefik dashboard from the default K3s Traefik installation in `kube-system` is exposed through an additional `Ingress` and `Service` in `kubernetes/production/application-extras/traefik/`.
+
+## Creating secrets with sealed-secrets ##
+
+`kubectl create secret generic foo --dry-run=client -o yaml --from-literal=foo=bar | kubeseal -o yaml`
