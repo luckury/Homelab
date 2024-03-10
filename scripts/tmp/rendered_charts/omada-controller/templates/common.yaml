@@ -1,0 +1,427 @@
+---
+# Source: omada-controller/templates/common.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: omada-controller-data
+  namespace: default
+  labels:
+    app: "omada-controller-13.1.0"
+    app.kubernetes.io/instance: "omada-controller"
+    app.kubernetes.io/managed-by: "Helm"
+    app.kubernetes.io/name: "omada-controller"
+    app.kubernetes.io/version: "5.13.0"
+    helm-revision: "1"
+    helm.sh/chart: "omada-controller-13.1.0"
+    release: "omada-controller"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+---
+# Source: omada-controller/templates/common.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: omada-controller-work
+  namespace: default
+  labels:
+    app: "omada-controller-13.1.0"
+    app.kubernetes.io/instance: "omada-controller"
+    app.kubernetes.io/managed-by: "Helm"
+    app.kubernetes.io/name: "omada-controller"
+    app.kubernetes.io/version: "5.13.0"
+    helm-revision: "1"
+    helm.sh/chart: "omada-controller-13.1.0"
+    release: "omada-controller"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+---
+# Source: omada-controller/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: omada-controller-comm
+  namespace: default
+  labels:
+    app: "omada-controller-13.1.0"
+    app.kubernetes.io/instance: "omada-controller"
+    app.kubernetes.io/managed-by: "Helm"
+    app.kubernetes.io/name: "omada-controller"
+    app.kubernetes.io/version: "5.13.0"
+    helm-revision: "1"
+    helm.sh/chart: "omada-controller-13.1.0"
+    release: "omada-controller"
+    service.name: "comm"
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+spec:
+  type: ClusterIP
+  publishNotReadyAddresses: false
+  ports:
+    - name: comm
+      port: 8843
+      protocol: TCP
+      targetPort: 8843
+  selector:
+    pod.name: main
+    app.kubernetes.io/name: omada-controller
+    app.kubernetes.io/instance: omada-controller
+---
+# Source: omada-controller/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: omada-controller
+  namespace: default
+  labels:
+    app: "omada-controller-13.1.0"
+    app.kubernetes.io/instance: "omada-controller"
+    app.kubernetes.io/managed-by: "Helm"
+    app.kubernetes.io/name: "omada-controller"
+    app.kubernetes.io/version: "5.13.0"
+    helm-revision: "1"
+    helm.sh/chart: "omada-controller-13.1.0"
+    release: "omada-controller"
+    service.name: "main"
+  annotations:
+    traefik.ingress.kubernetes.io/service.serversscheme: "https"
+spec:
+  type: ClusterIP
+  publishNotReadyAddresses: false
+  ports:
+    - name: main
+      port: 8043
+      protocol: TCP
+      targetPort: 8043
+  selector:
+    pod.name: main
+    app.kubernetes.io/name: omada-controller
+    app.kubernetes.io/instance: omada-controller
+---
+# Source: omada-controller/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: omada-controller-omada-tcp
+  namespace: default
+  labels:
+    app: "omada-controller-13.1.0"
+    app.kubernetes.io/instance: "omada-controller"
+    app.kubernetes.io/managed-by: "Helm"
+    app.kubernetes.io/name: "omada-controller"
+    app.kubernetes.io/version: "5.13.0"
+    helm-revision: "1"
+    helm.sh/chart: "omada-controller-13.1.0"
+    release: "omada-controller"
+    service.name: "omada-tcp"
+spec:
+  type: ClusterIP
+  publishNotReadyAddresses: false
+  ports:
+    - name: omada-tcp1
+      port: 29811
+      protocol: TCP
+      targetPort: 29811 
+    - name: omada-tcp2
+      port: 29812
+      protocol: TCP
+      targetPort: 29812 
+    - name: omada-tcp3
+      port: 29813
+      protocol: TCP
+      targetPort: 29813 
+    - name: omada-tcp4
+      port: 29814
+      protocol: TCP
+      targetPort: 29814
+  selector:
+    pod.name: main
+    app.kubernetes.io/name: omada-controller
+    app.kubernetes.io/instance: omada-controller
+---
+# Source: omada-controller/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: omada-controller-omada-udp
+  namespace: default
+  labels:
+    app: "omada-controller-13.1.0"
+    app.kubernetes.io/instance: "omada-controller"
+    app.kubernetes.io/managed-by: "Helm"
+    app.kubernetes.io/name: "omada-controller"
+    app.kubernetes.io/version: "5.13.0"
+    helm-revision: "1"
+    helm.sh/chart: "omada-controller-13.1.0"
+    release: "omada-controller"
+    service.name: "omada-udp"
+spec:
+  type: ClusterIP
+  publishNotReadyAddresses: false
+  ports:
+    - name: omada-udp1
+      port: 29810
+      protocol: UDP
+      targetPort: 29810
+  selector:
+    pod.name: main
+    app.kubernetes.io/name: omada-controller
+    app.kubernetes.io/instance: omada-controller
+---
+# Source: omada-controller/templates/common.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: omada-controller
+  namespace: default
+  labels:
+    app: "omada-controller-13.1.0"
+    app.kubernetes.io/instance: "omada-controller"
+    app.kubernetes.io/managed-by: "Helm"
+    app.kubernetes.io/name: "omada-controller"
+    app.kubernetes.io/version: "5.13.0"
+    helm-revision: "1"
+    helm.sh/chart: "omada-controller-13.1.0"
+    release: "omada-controller"
+spec:  
+  replicas: 1
+  revisionHistoryLimit: 3
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      pod.name: main
+      app.kubernetes.io/name: omada-controller
+      app.kubernetes.io/instance: omada-controller
+  template:
+    metadata:
+      labels:
+        app: "omada-controller-13.1.0"
+        app.kubernetes.io/instance: "omada-controller"
+        app.kubernetes.io/managed-by: "Helm"
+        app.kubernetes.io/name: "omada-controller"
+        app.kubernetes.io/version: "5.13.0"
+        helm-revision: "1"
+        helm.sh/chart: "omada-controller-13.1.0"
+        pod.lifecycle: "permanent"
+        pod.name: "main"
+        release: "omada-controller"
+      annotations:
+        rollme: "KtBM2"
+    spec:
+      serviceAccountName: default
+      automountServiceAccountToken: false
+      runtimeClassName: 
+      hostNetwork: false
+      hostPID: false
+      hostIPC: false
+      shareProcessNamespace: false
+      enableServiceLinks: false
+      restartPolicy: Always
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      topologySpreadConstraints:
+        - maxSkew: 1
+          whenUnsatisfiable: ScheduleAnyway
+          topologyKey: "truecharts.org/rack"
+          labelSelector:
+            matchLabels:      
+              pod.name: main
+              app.kubernetes.io/name: omada-controller
+              app.kubernetes.io/instance: omada-controller
+          nodeAffinityPolicy: Honor
+          nodeTaintsPolicy: Honor
+        - maxSkew: 1
+          whenUnsatisfiable: ScheduleAnyway
+          topologyKey: "kubernetes.io/hostname"
+          labelSelector:
+            matchLabels:      
+              pod.name: main
+              app.kubernetes.io/name: omada-controller
+              app.kubernetes.io/instance: omada-controller
+          nodeAffinityPolicy: Honor
+          nodeTaintsPolicy: Honor
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "1"
+      terminationGracePeriodSeconds: 60
+      securityContext:
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+          - 568
+        sysctls: []
+      hostUsers: true
+      containers:
+        - name: omada-controller
+          image: mbentley/omada-controller:5.13@sha256:6b878ecca6e2806ef0495961d33db1b9adb1ba7582d2bdd4d759ff0ff7288470
+          imagePullPolicy: IfNotPresent
+          tty: false
+          stdin: false
+          ports:
+            - name: comm
+              containerPort: 8843
+              protocol: TCP
+              hostPort: null
+            - name: main
+              containerPort: 8043
+              protocol: TCP
+              hostPort: null
+            - name: omada-tcp1
+              containerPort: 29811
+              protocol: TCP
+              hostPort: null
+            - name: omada-tcp2
+              containerPort: 29812
+              protocol: TCP
+              hostPort: null
+            - name: omada-tcp3
+              containerPort: 29813
+              protocol: TCP
+              hostPort: null
+            - name: omada-tcp4
+              containerPort: 29814
+              protocol: TCP
+              hostPort: null
+            - name: omada-udp1
+              containerPort: 29810
+              protocol: UDP
+              hostPort: null
+          volumeMounts:
+            - name: data
+              mountPath: /opt/tplink/EAPController/data
+              readOnly: false
+            - name: devshm
+              mountPath: /dev/shm
+              readOnly: false
+            - name: shared
+              mountPath: /shared
+              readOnly: false
+            - name: tmp
+              mountPath: /tmp
+              readOnly: false
+            - name: varlogs
+              mountPath: /var/logs
+              readOnly: false
+            - name: varrun
+              mountPath: /var/run
+              readOnly: false
+            - name: work
+              mountPath: /opt/tplink/EAPController/work
+              readOnly: false
+          livenessProbe:
+            httpGet:
+              port: 8043
+              path: /api/info
+              scheme: HTTPS
+              httpHeaders:
+                - name: Host
+                  value: "kube.internal.health"
+            initialDelaySeconds: 10
+            failureThreshold: 5
+            successThreshold: 1
+            timeoutSeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              port: 8043
+              path: /api/info
+              scheme: HTTPS
+              httpHeaders:
+                - name: Host
+                  value: "kube.internal.health"
+            initialDelaySeconds: 10
+            failureThreshold: 5
+            successThreshold: 2
+            timeoutSeconds: 5
+            periodSeconds: 10
+          startupProbe:
+            tcpSocket:
+              port: 8043
+            initialDelaySeconds: 10
+            failureThreshold: 60
+            successThreshold: 1
+            timeoutSeconds: 2
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+            limits: 
+              cpu: 4000m 
+              memory: 8Gi
+          securityContext:
+            runAsNonRoot: false
+            runAsUser: 0
+            runAsGroup: 0
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+            privileged: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              add:
+                - CHOWN
+                - SETUID
+                - SETGID
+                - FOWNER
+                - DAC_OVERRIDE
+              drop:
+                - ALL
+          env:
+            - name: "TZ"
+              value: "UTC"
+            - name: "UMASK"
+              value: "0022"
+            - name: "UMASK_SET"
+              value: "0022"
+            - name: "PUID"
+              value: "568"
+            - name: "USER_ID"
+              value: "568"
+            - name: "UID"
+              value: "568"
+            - name: "PGID"
+              value: "568"
+            - name: "GROUP_ID"
+              value: "568"
+            - name: "GID"
+              value: "568"
+            - name: "MANAGE_HTTPS_PORT"
+              value: "8043"
+            - name: "PORTAL_HTTPS_PORT"
+              value: "8843"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: omada-controller-data
+        - name: devshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 8Gi
+        - name: shared
+          emptyDir: {}
+        - name: tmp
+          emptyDir:
+            medium: Memory
+            sizeLimit: 8Gi
+        - name: varlogs
+          emptyDir:
+            medium: Memory
+            sizeLimit: 8Gi
+        - name: varrun
+          emptyDir:
+            medium: Memory
+            sizeLimit: 8Gi
+        - name: work
+          persistentVolumeClaim:
+            claimName: omada-controller-work

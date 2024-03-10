@@ -1,0 +1,16 @@
+---
+# Source: pihole/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pihole-custom-dnsmasq
+  labels:
+    app: pihole
+    chart: pihole-2.21.0
+    release: pihole
+    heritage: Helm
+data:
+  02-custom.conf: |
+    addn-hosts=/etc/addn-hosts
+  addn-hosts: |
+  05-pihole-custom-cname.conf: |

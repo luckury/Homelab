@@ -1,0 +1,14 @@
+---
+# Source: rancher/templates/issuer-rancher.yaml
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: rancher
+  labels:
+    app: rancher
+    chart: rancher-2.8.2
+    heritage: Helm
+    release: rancher
+spec:
+  ca:
+    secretName: tls-rancher

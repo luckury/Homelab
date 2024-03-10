@@ -1,0 +1,16 @@
+---
+# Source: pihole/templates/tests/test-pihole-endpoint.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "pihole-smoke-test"
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+  - name: hook1-container
+    image: curlimages/curl
+    imagePullPolicy: IfNotPresent
+    command: ['sh', '-c', 'curl http://pihole-web:80/']
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 0

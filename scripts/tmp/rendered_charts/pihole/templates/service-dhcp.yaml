@@ -1,0 +1,22 @@
+---
+# Source: pihole/templates/service-dhcp.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-dhcp
+  labels:
+    app: pihole
+    chart: pihole-2.21.0
+    release: pihole
+    heritage: Helm
+spec:
+  type: NodePort
+  externalTrafficPolicy: Local
+  ports:
+    - port: 67
+      targetPort: client-udp
+      protocol: UDP
+      name: client-udp
+  selector:
+    app: pihole
+    release: pihole
